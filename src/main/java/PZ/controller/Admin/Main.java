@@ -1,7 +1,10 @@
 package PZ.controller.Admin;
 import PZ.model.Character;
 import PZ.utils.DBUtil;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -48,7 +51,22 @@ public class Main extends Controller{
 
     public void initialize() {
         name=null;
-        List<Character> characters = DBUtil.selectAll("Character");
-        characters.forEach(character -> listView.getItems().add(character.getName()));
+        Task<List<Character>> thread= new Task<List<Character>>() {
+
+            @Override
+            protected List<Character> call() throws Exception {
+                return DBUtil.selectAll("Character");
+            }
+        };
+        thread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent workerStateEvent) {
+                List<Character> characters = thread.getValue();
+                characters.forEach(character -> listView.getItems().add(character.getName()));
+            }
+        });
+        new Thread(thread).start();
+        //List<Character> characters = DBUtil.selectAll("Character");
+        //characters.forEach(character -> listView.getItems().add(character.getName()));
     }
 }
