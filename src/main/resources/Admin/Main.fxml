@@ -10,5 +10,7 @@
     <Button layoutX="300.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeSceneToCharactersManagement" text="Dodaj postać" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="10.0" />
     <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#changeSceneToCharacterUpdate" text="Edytuj postać" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="100.0" />
     <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#deleteCharacter" text="Usuń postać" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="200.0" />
+    <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#changeSceneToWeaponsMain" text="Przejdź do ekwipunku" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="300.0" />
+    <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#changeSceneToRandom" text="Stwórz losowy build do losowej postaci" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="400.0" />
     <ListView fx:id="listView" layoutX="27.0" layoutY="49.0" prefHeight="412.0" prefWidth="610.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="49.0" />
 </AnchorPane>

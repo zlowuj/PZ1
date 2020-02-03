@@ -1,4 +1,5 @@
 package PZ.controller.Admin;
+
 import PZ.model.Character;
 import PZ.model.Weapon;
 import PZ.utils.DBUtil;
@@ -13,36 +14,34 @@ import javafx.scene.control.ListView;
 import java.util.List;
 import java.util.Optional;
 import PZ.controller.Admin.UpdateCharacter;
-import java.util.Random;
 
-public class Main extends Controller{
+public class Weapons extends Controller{
     @FXML private ListView<String> listView;
-    private Character character;
-    public void changeSceneToCharactersManagement(ActionEvent event) {
-        changeScene(event, "/Admin/AddCharacter");
+    private Weapon weapon;
+    public void changeSceneToWeaponsManagement(ActionEvent event) {
+        changeScene(event, "/Admin/AddWeapon");
     }
-    public void changeSceneToCharacterUpdate(ActionEvent event) {
+    public void changeSceneToWeaponsUpdate(ActionEvent event) {
         if (listView.getSelectionModel().getSelectedIndex() == -1) {
-            error("Nie wybrano żadnej postaci");
+            error("Nie wybrano żadnego przedmiotu");
         } else {
             name = listView.getSelectionModel().getSelectedItem();
-            changeScene(event, "/Admin/UpdateCharacter");
-        }
-    }
-    public void deleteCharacter(ActionEvent event) {
+            changeScene(event, "/Admin/UpdateWeapon");
+        };}
+    public void deleteWeapon(ActionEvent event){
         if (listView.getSelectionModel().getSelectedIndex() == -1) {
-            error("Nie wybrano żadnej postaci");
+            error("Nie wybrano żadnego przedmiotu");
         } else {
             name = listView.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("OSTRZEŻENIE");
-            alert.setHeaderText("Czy na pewno chcesz usunąć tą postać?");
+            alert.setHeaderText("Czy na pewno chcesz usunąć ten przedmiot?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
-                character =(Character)DBUtil.selectAllWhere("Character", "name", name).get(0);
+                 weapon=(Weapon) DBUtil.selectAllWhere("Weapon", "name", name).get(0);
                 try {
-                    DBUtil.delete(character);
-                    changeScene(event, "/Admin/Main");
+                    DBUtil.delete(weapon);
+                    changeScene(event, "/Admin/Weapons");
                 } catch (Exception e) {
                     e.printStackTrace();
                     error("USUWANIE NIE POWIODŁO SIĘ");
@@ -50,26 +49,23 @@ public class Main extends Controller{
             }
         }
     }
-    public void changeSceneToWeaponsMain(ActionEvent event) {
-        changeScene(event, "/Admin/Weapons");
-    }
-    public void changeSceneToRandom(ActionEvent event) {
-        changeScene(event, "/Admin/RandomBuild");
+    public void changeSceneToAdminMain(ActionEvent event) {
+        changeScene(event, "/Admin/Main");
     }
     public void initialize() {
         name=null;
-        Task<List<Character>> thread= new Task<List<Character>>() {
+        Task<List<Weapon>> thread= new Task<List<Weapon>>() {
 
             @Override
-            protected List<Character> call() throws Exception {
-                return DBUtil.selectAll("Character");
+            protected List<Weapon> call() throws Exception {
+                return DBUtil.selectAll("Weapon");
             }
         };
         thread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent workerStateEvent) {
-                List<Character> characters = thread.getValue();
-                characters.forEach(character -> listView.getItems().add(character.getName()));
+                List<Weapon> weapons = thread.getValue();
+                weapons.forEach(weapon -> listView.getItems().add(weapon.getName()));
             }
         });
         new Thread(thread).start();

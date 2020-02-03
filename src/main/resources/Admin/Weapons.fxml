@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="PZ.controller.Admin.Weapons" prefHeight="720.0" prefWidth="1280.0">
+    <ListView fx:id="listView" layoutX="27.0" layoutY="49.0" prefHeight="412.0" prefWidth="610.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="49.0" />
+    <Button layoutX="300.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeSceneToWeaponsManagement" text="Dodaj przedmiot" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="10.0" />
+    <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#changeSceneToWeaponsUpdate" text="Edytuj przedmiot" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="100.0" />
+    <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#deleteWeapon" text="Usuń przedmiot" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="200.0" />
+    <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#changeSceneToAdminMain" text="Przejdź do postaci" AnchorPane.leftAnchor="1100.0" AnchorPane.topAnchor="300.0" />
+</AnchorPane>

@@ -13,10 +13,14 @@ public class Register extends Controller {
     @FXML private TextField password1;
     @FXML private TextField password2;
     public void ValidateAndChangeSceneToAdmin(ActionEvent event) {
-        if(password1.getText()==password2.getText()) {
+        System.out.println(password1.getText() + "NIGGER: " + password2.getText());
+        String temp = password1.getText();
+        String temp2 = password2.getText();
+        if(password1.getText().compareTo(password2.getText())==0) {
             Account account = new Account();
             account.setUsername(username.getText());
             account.setPassword(password1.getText());
+
             try {
                 DBUtil.insert(account);
             } catch (Exception e) {

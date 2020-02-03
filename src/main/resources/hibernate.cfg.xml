@@ -19,6 +19,7 @@
 
         <mapping class="PZ.model.Account"/>
         <mapping class="PZ.model.Character"/>
+        <mapping class="PZ.model.Weapon"/>
 
     </session-factory>
 </hibernate-configuration>
