@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PZ.controller.Guest.Main">
+    <Button layoutX="30.0" layoutY="500.0" mnemonicParsing="false" onAction="#changeSceneToLogIn" text="zaloguj się" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="20.0" />
+    <Button layoutX="30.0" layoutY="500.0" mnemonicParsing="false" onAction="#changeSceneToCharacter" text="obejrzyj opis postaci" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="200.0" />
+    <Button layoutX="30.0" layoutY="500.0" mnemonicParsing="false" onAction="#changeSceneToRegister" text="Zarejestruj się" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="100.0" />
+    <ListView fx:id="listView" layoutX="27.0" layoutY="49.0" prefHeight="412.0" prefWidth="610.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="49.0" />
+</AnchorPane>
